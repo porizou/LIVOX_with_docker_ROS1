@@ -18,13 +18,17 @@ screen \
 iputils-ping \
 net-tools \ 
 pcl-tools \
+v4l-utils \
+ffmpeg \
 terminator && \
 apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # ROSのパッケージのインストール
 RUN apt-get update && apt-get install -y \
-    ros-$ROS_DISTRO-perception-pcl ros-$ROS_DISTRO-rviz ros-$ROS_DISTRO-eigen-conversions && \
-    rm -rf /var/lib/apt/lists/*
+    ros-$ROS_DISTRO-perception-pcl ros-$ROS_DISTRO-rviz ros-$ROS_DISTRO-eigen-conversions \
+    ros-$ROS_DISTRO-usb-cam \
+    ros-$ROS_DISTRO-image-view && \
+    rm -rf /var/lib/apt/lists/* 
 
 # LIVOX-SDKのインストール
 RUN git clone https://github.com/Livox-SDK/Livox-SDK2.git && \
